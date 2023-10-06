@@ -1,25 +1,17 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-import SafeComponent from "./SafeComponent";
 const Header = React.lazy(() => import("home/Header"));
 import Footer from "home/Footer";
 
 const App = () => {
-  const [showHeader, setShowHeader] = useState(false);
 
   return (
     <div className="container">
-      {showHeader && (
-        // <Suspense fallback={<div>Loading...</div>}>
-          <SafeComponent>
+        <Suspense fallback={<div>Loading...</div>}>
           <Header  />
-          </SafeComponent>
-         
-        // </Suspense>
-      )}
-      <button className="" onClick={() => setShowHeader(!showHeader)} >Show Header</button>
+        </Suspense>
 
       <div className="">Product page Content.</div>
       <Footer />
